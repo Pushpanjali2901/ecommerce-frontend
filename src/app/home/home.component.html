@@ -1,0 +1,32 @@
+<div class="container mt-5">
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Search Product</mat-label>
+        <input matInput #searchkeyword (keyup)="searchByKeyword(searchkeyword.value)" name="searchKey" id="searchkey" placeholder="Search Product">
+    </mat-form-field>
+
+    <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10">
+        <mat-grid-tile *ngFor="let p of productDetails">
+            <div class="row product-detail">
+                <div class="image-container">
+                    <img class="home-page-product-image" [src]="p.productImages[0].url" alt="">
+                </div>
+                <div class="mt-2">
+                    <p><b>{{p.productName}}</b></p>
+                </div>
+                <div class="mt-2">
+                    <p
+                        style="white-space: inherit; height: 40px; width: 288px; overflow: hidden; text-overflow: ellipsis;">
+                        {{p.productDescription}}</p>
+                </div>
+                <div class="mt-2">
+                    <p><b> Rs. {{p.productDiscountedPrice}}</b> &nbsp; <b
+                            style="text-decoration: line-through;">{{p.productActualPrice}}</b></p>
+                </div>
+                <div class="mt-2">
+                    <button type="button" mat-raised-button color="primary" (click)="showProductDetails(p.productId)"> View Details </button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
